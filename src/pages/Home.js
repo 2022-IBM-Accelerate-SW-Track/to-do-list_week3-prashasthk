@@ -28,8 +28,10 @@ class Home extends Component {
   // the addTodo function simply creates a new array that includes the user submitted todo item and then
   // updates the state with the new list.
   addTodo = (todo) => {
-    const exists = this.state.todos.find(t => t.content === todo.content);
+    const exists = this.state.todos.find(t => t.content.trim() === todo.content.trim());
+    // const invalidDate = this.state.todos.find(t => t.due === null || t.due === "Invalid Date");
     if (exists){ return }
+    if (todo.due === null || todo.due === "Invalid Date") { return }
     // In React, keys or ids in a list help identify which items have changed, been added or removed. Keys
     // should not share duplicate values.
     // To avoid having dup values, we use the Math.random() function to generate a random value for a todo id.
@@ -49,7 +51,7 @@ class Home extends Component {
         <h1>Todo's </h1>
         {/* When passing the AddTodo component, addTodo is a prop that is used in the 
         AddTodo.js file when handling the submit */}
-        <AddTodo addTodo={this.addTodo} />
+        <AddTodo addTodo={this.addTodo}/>
         {/* When returning the Todos component, todos is a prop passed to the todos.js file
          to format and render the current todo list state */}
         <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />

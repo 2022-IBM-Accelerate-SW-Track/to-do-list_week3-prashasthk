@@ -28,7 +28,7 @@ class AddTodo extends Component {
   // in the Home.js file which then adds the input into the list.
   handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.content.trim() && this.state.due !== null) {
+    if (this.state.content.trim() && this.state.due !== null && this.state.due !== "Invalid Date") {
       this.props.addTodo(this.state);
       this.setState({
         content: "",

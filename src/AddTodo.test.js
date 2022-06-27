@@ -65,7 +65,6 @@ afterEach(() => {
   expect(check).toBeInTheDocument();
  });
 
-
  test('test that App component renders different colors for past due events', () => {
   render(<App />);
   const inputTask = screen.getByRole('textbox', {name: /Add New Item/i});
@@ -79,5 +78,5 @@ afterEach(() => {
   fireEvent.click(element);
   const checkTest1Color = screen.getByTestId(/Test/i).style.background;
   const checkTest2Color = screen.getByTestId(/Chores/i).style.background;
-  expect(checkTest1Color == checkTest2Color).toBe(false);
+  expect(checkTest1Color === checkTest2Color).toBe(false);
  });
